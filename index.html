@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MP3 TEAM</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, "Malgun Gothic", sans-serif;
+            background: #07101f;
+            color: #f4f7fb;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .fixed-top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: #07101f;
+            z-index: 999;
+        }
+
+        .fixed-logo-link {
+            position: fixed;
+            top: 18px;
+            left: 22px;
+            z-index: 1000;
+            display: block;
+            width: 130px;
+            opacity: 0.92;
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .fixed-logo-link:hover {
+            opacity: 1;
+            transform: scale(1.04);
+        }
+
+        .fixed-logo {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0 80px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            right: -180px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            right: -80px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #8da4c4;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(80px, 18vw, 180px);
+            line-height: 0.85;
+            letter-spacing: -8px;
+        }
+
+        .hero-description {
+            margin-top: 45px;
+            max-width: 560px;
+            font-size: 18px;
+            color: #aebbcf;
+            word-break: keep-all;
+        }
+
+        .scroll-label {
+            margin-top: 55px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #7386a3;
+        }
+
+        section {
+            padding: 130px 0;
+        }
+
+        .section-label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #7287a6;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: clamp(40px, 7vw, 76px);
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 45px;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .member-card {
+            min-height: 420px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.025);
+            display: flex;
+            flex-direction: column;
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .member-number {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #657a99;
+        }
+
+        .member-info {
+            margin-top: 135px;
+        }
+
+        .member-name {
+            font-size: 34px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .member-role {
+            color: #8ca3c2;
+            font-size: 14px;
+            margin-bottom: 20px;
+            min-height: 24px;
+        }
+
+        .member-work {
+            color: #9daabd;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .email-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #c5cfdd;
+            border-bottom: 1px solid rgba(197, 207, 221, 0.35);
+            transition:
+                color 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .email-link:hover {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .support-area {
+            margin-top: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.018);
+            padding: 28px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .support-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #657a99;
+            margin-bottom: 12px;
+        }
+
+        .support-name {
+            font-size: 28px;
+            line-height: 1.2;
+        }
+
+        .support-info {
+            text-align: right;
+        }
+
+        .support-role {
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: #8ca3c2;
+            margin-bottom: 4px;
+        }
+
+        .support-work {
+            font-size: 13px;
+            color: #9daabd;
+        }
+
+        .support-info .email-link {
+            margin-top: 10px;
+        }
+
+        .project-section {
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        .project-main {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 0;
+        }
+
+        .project-top {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+            gap: 70px;
+            align-items: center;
+        }
+
+        .project-year {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #697e9e;
+        }
+
+        .project-name {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .project-name-main {
+            display: block;
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 0.95;
+            letter-spacing: -3px;
+            font-weight: 700;
+        }
+
+        .project-name-sub {
+            display: block;
+            margin-top: 10px;
+            font-size: clamp(22px, 3vw, 34px);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            font-weight: 400;
+            color: #c5cfdd;
+        }
+
+        .project-summary {
+            max-width: 520px;
+            font-size: 19px;
+            line-height: 1.8;
+            color: #aebbcf;
+            word-break: keep-all;
+        }
+
+        .project-logo-wrap {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-logo {
+            display: block;
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .project-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-spec {
+            padding: 28px 0;
+        }
+
+        .project-spec + .project-spec {
+            padding-left: 35px;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-spec-label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #657a99;
+        }
+
+        .project-spec-value {
+            font-size: 20px;
+            color: #f4f7fb;
+        }
+
+        .project-description {
+            max-width: 850px;
+            margin-top: 60px;
+        }
+
+        .project-description p {
+            margin-bottom: 22px;
+            font-size: 17px;
+            line-height: 1.95;
+            color: #aebbcf;
+            word-break: keep-all;
+        }
+
+        .project-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        footer {
+            min-height: 65vh;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+        }
+
+        .footer-inner {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: clamp(60px, 14vw, 130px);
+            line-height: 0.85;
+            letter-spacing: -6px;
+        }
+
+        .footer-info {
+            text-align: right;
+            font-size: 13px;
+            color: #8594aa;
+        }
+
+        @media (max-width: 800px) {
+            .fixed-top-bar {
+                height: 78px;
+            }
+
+            .fixed-logo-link {
+                top: 13px;
+                left: 16px;
+                width: 95px;
+            }
+
+            .hero {
+                min-height: 100vh;
+                padding: 105px 0 90px;
+            }
+
+            .hero h1 {
+                letter-spacing: -5px;
+            }
+
+            .hero-description {
+                margin-top: 35px;
+            }
+
+            .scroll-label {
+                margin-top: 45px;
+            }
+
+            section {
+                padding: 90px 0;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .member-card {
+                min-height: 300px;
+            }
+
+            .member-info {
+                margin-top: 80px;
+            }
+
+            .support-area {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .support-info {
+                text-align: left;
+            }
+
+            .project-section {
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+
+            .project-main {
+                padding: 45px 0;
+            }
+
+            .project-top {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .project-logo-wrap {
+                justify-content: flex-start;
+            }
+
+            .project-logo {
+                max-width: 400px;
+            }
+
+            .project-specs {
+                grid-template-columns: 1fr;
+                margin-top: 45px;
+            }
+
+            .project-spec {
+                padding: 22px 0;
+            }
+
+            .project-spec + .project-spec {
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .project-description {
+                margin-top: 45px;
+            }
+
+            .project-description p {
+                font-size: 15px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-info {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fixed-top-bar"></div>
+
+    <a class="fixed-logo-link" href="#top">
+        <img
+            class="fixed-logo"
+            src="./unmute-logo-white.png"
+            alt="UNMUTE logo"
+        >
+    </a>
+
+    <header id="top" class="hero">
+        <div class="container hero-content">
+
+            <p class="eyebrow">
+                &#49692;&#52380;&#54693;&#45824;&#54617;&#44368; &#47700;&#53440;&#48260;&#49828;&amp;&#44172;&#51076;&#54617;&#44284;
+            </p>
+
+            <h1>MP3</h1>
+
+            <p class="hero-description">
+                &#49692;&#52380;&#54693;&#45824;&#54617;&#44368; &#47700;&#53440;&#48260;&#49828;&amp;&#44172;&#51076;&#54617;&#44284; 3&#51064; &#54532;&#47196;&#51229;&#53944; &#44060;&#48156;&#54016; MP3&#51077;&#45768;&#45796;.
+            </p>
+
+            <p class="scroll-label">
+                &#50500;&#47000;&#47196; &#49828;&#53356;&#47204;
+            </p>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section id="members">
+            <div class="container">
+
+                <span class="section-label">
+                    01 / MEMBERS
+                </span>
+
+                <h2 class="section-title">
+                    ABOUT US
+                </h2>
+
+                <div class="members-grid">
+
+                    <article class="member-card">
+
+                        <span class="member-number">
+                            MEMBER 01
+                        </span>
+
+                        <div class="member-info">
+
+                            <h3 class="member-name">
+                                &#44608;&#51008;&#49556;
+                            </h3>
+
+                            <p class="member-role">
+                                &#54016;&#51109; / &#44592;&#54925;
+                            </p>
+
+                            <p class="member-work">
+                                &#54016;&#51109;<br>
+                                &#44172;&#51076; &#44592;&#54925;<br>
+                                &#47605; &#46356;&#51088;&#51064;<br>
+                                &#44172;&#51076; &#44592;&#45733; &#44060;&#48156;
+                            </p>
+
+                            <a
+                                class="email-link"
+                                href="mailto:eunsolk.dev@gmail.com"
+                            >
+                                eunsolk.dev@gmail.com
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <article class="member-card">
+
+                        <span class="member-number">
+                            MEMBER 02
+                        </span>
+
+                        <div class="member-info">
+
+                            <h3 class="member-name">
+                                &#51060;&#50500;&#47492;
+                            </h3>
+
+                            <p class="member-role">
+                                &#54532;&#47196;&#44536;&#47000;&#48141;
+                            </p>
+
+                            <p class="member-work">
+                                &#54532;&#47196;&#44536;&#47000;&#48141;<br>
+                                &#46041;&#51089; &#51064;&#49885; &#44592;&#45733; &#44396;&#54788;
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="member-card">
+
+                        <span class="member-number">
+                            MEMBER 03
+                        </span>
+
+                        <div class="member-info">
+
+                            <h3 class="member-name">
+                                &#54616;&#50689;&#51452;
+                            </h3>
+
+                            <p class="member-role">
+                                UI / &#47112;&#48296; &#46356;&#51088;&#51064; / &#49324;&#50868;&#46300;
+                            </p>
+
+                            <p class="member-work">
+                                &#47700;&#51064; UI<br>
+                                &#47532;&#46316;&#44172;&#51076; &#47112;&#48296; &#46356;&#51088;&#51064;<br>
+                                &#49324;&#50868;&#46300;
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div class="support-area">
+
+                    <div>
+
+                        <p class="support-label">
+                            ILLUSTRATION SUPPORT
+                        </p>
+
+                        <h3 class="support-name">
+                            &#44608;&#51652;
+                        </h3>
+
+                    </div>
+
+                    <div class="support-info">
+
+                        <p class="support-role">
+                            CHARACTER ILLUSTRATOR
+                        </p>
+
+                        <p class="support-work">
+                            UNMUTE &#52880;&#47533;&#53552; &#51068;&#47084;&#49828;&#53944;
+                        </p>
+
+                        <a
+                            class="email-link"
+                            href="mailto:ppallix2@gmali.com"
+                        >
+                            ppallix2@gmali.com
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="project" class="project-section">
+            <div class="container">
+
+                <span class="section-label">
+                    02 / PROJECT
+                </span>
+
+                <h2 class="section-title">
+                    CURRENT PROJECT
+                </h2>
+
+                <div class="project-main">
+
+                    <div class="project-top">
+
+                        <div class="project-info">
+
+                            <span class="project-year">
+                                2026
+                            </span>
+
+                            <h3 class="project-name">
+
+                                <span class="project-name-main">
+                                    UNMUTE
+                                </span>
+
+                                <span class="project-name-sub">
+                                    : The Vivid World
+                                </span>
+
+                            </h3>
+
+                            <p class="project-summary">
+                                &#50937;&#52896; &#44592;&#48152; &#49552; &#46041;&#51089; &#51064;&#49885;&#51012; &#54876;&#50857;&#54620; &#47532;&#46316; &#44172;&#51076;
+                            </p>
+
+                        </div>
+
+                        <div class="project-logo-wrap">
+
+                            <img
+                                class="project-logo"
+                                src="./unmute-logo-white.png"
+                                alt="UNMUTE logo"
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="project-specs">
+
+                        <div class="project-spec">
+
+                            <span class="project-spec-label">
+                                ENGINE
+                            </span>
+
+                            <p class="project-spec-value">
+                                Unity
+                            </p>
+
+                        </div>
+
+                        <div class="project-spec">
+
+                            <span class="project-spec-label">
+                                TECH
+                            </span>
+
+                            <p class="project-spec-value">
+                                MediaPipe / Hand Tracking
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="project-description">
+
+                        <p>
+                            UNMUTE&#45716; &#44592;&#51316; &#47532;&#46316; &#44172;&#51076;&#51032; &#51077;&#47141; &#48169;&#49885;&#50640;&#49436; &#48279;&#50612;&#45208;, MediaPipe&#47484; &#54876;&#50857;&#54620; &#49552; &#46041;&#51089; &#51064;&#49885; &#49884;&#49828;&#53596;&#51012; &#54645;&#49900; &#54540;&#47112;&#51060; &#48169;&#49885;&#51004;&#47196; &#52292;&#53469;&#54664;&#49845;&#45768;&#45796;.
+                        </p>
+
+                        <p>
+                            &#54540;&#47112;&#51060;&#50612;&#45716; &#53412;&#48372;&#46300;&#45208; &#48260;&#53948; &#45824;&#49888; &#51649;&#51217; &#49552;&#51012; &#50880;&#51649;&#50668; &#47532;&#46316;&#51012; &#49688;&#54665;&#54616;&#47728;, &#51060;&#47484; &#53685;&#54644; &#44172;&#51076;&#51032; &#54645;&#49900; &#52968;&#49481;&#51064; '&#46356;&#51228;&#51081;'&#51012; &#48372;&#45796; &#51649;&#44288;&#51201;&#51060;&#44256; &#47792;&#51077;&#44048; &#51080;&#44172; &#44221;&#54744;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.
+                        </p>
+
+                        <p>
+                            &#45800;&#49692;&#55176; &#47532;&#46316;&#50640; &#47582;&#52656; &#51077;&#47141;&#54616;&#45716; &#44163;&#51012; &#45336;&#50612;, &#54540;&#47112;&#51060;&#50612;&#44032; &#51649;&#51217; &#44172;&#51076; &#49549; DJ&#44032; &#46104;&#50612; &#51020;&#50501;&#51012; &#50672;&#51452;&#54616;&#45716; &#46319;&#54620; &#44221;&#54744;&#51012; &#51204;&#45804;&#54616;&#45716; &#44163;&#51012; &#47785;&#54364;&#47196; &#54633;&#45768;&#45796;.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="container footer-inner">
+
+            <div>
+
+                <div class="footer-logo">
+                    MP3
+                </div>
+
+            </div>
+
+            <div class="footer-info">
+
+                <p>
+                    &#49692;&#52380;&#54693;&#45824;&#54617;&#44368;<br>
+                    &#47700;&#53440;&#48260;&#49828;&amp;&#44172;&#51076;&#54617;&#44284; 3&#51064; &#44172;&#51076; &#44060;&#48156;&#54016;
+                </p>
+
+                <p>
+                    2026
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
