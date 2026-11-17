@@ -400,6 +400,56 @@
             margin-bottom: 0;
         }
 
+        .process-section {
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        .process-list {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .process-item {
+            display: grid;
+            grid-template-columns: 90px 280px minmax(0, 1fr);
+            gap: 30px;
+            padding: 42px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: start;
+        }
+
+        .process-number {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #657a99;
+        }
+
+        .process-name {
+            font-size: 22px;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            font-weight: 600;
+        }
+
+        .process-content {
+            max-width: 650px;
+        }
+
+        .process-description {
+            font-size: 16px;
+            line-height: 1.85;
+            color: #aebbcf;
+            word-break: keep-all;
+        }
+
+        .process-credit {
+            margin-top: 15px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #7186a5;
+            word-break: keep-all;
+        }
+
         footer {
             min-height: 65vh;
             display: flex;
@@ -525,6 +575,33 @@
 
             .project-description p {
                 font-size: 15px;
+            }
+
+            .process-section {
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+
+            .process-item {
+                grid-template-columns: 50px minmax(0, 1fr);
+                gap: 18px;
+                padding: 32px 0;
+            }
+
+            .process-name {
+                font-size: 19px;
+            }
+
+            .process-content {
+                grid-column: 2;
+            }
+
+            .process-description {
+                font-size: 15px;
+            }
+
+            .process-credit {
+                font-size: 12px;
             }
 
             .footer-inner {
@@ -818,6 +895,144 @@
                         </p>
 
                     </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="development" class="process-section">
+            <div class="container">
+
+                <span class="section-label">
+                    03 / DEVELOPMENT
+                </span>
+
+                <h2 class="section-title">
+                    PROCESS
+                </h2>
+
+                <div class="process-list">
+
+                    <article class="process-item">
+
+                        <span class="process-number">
+                            01
+                        </span>
+
+                        <h3 class="process-name">
+                            PLANNING
+                        </h3>
+
+                        <div class="process-content">
+
+                            <p class="process-description">
+                                &#44172;&#51076;&#51032; &#54645;&#49900; &#52968;&#49481;&#44284; &#54540;&#47112;&#51060; &#55120;&#47492;&#51012; &#51221;&#54616;&#44256;, &#54596;&#50836;&#54620; &#44592;&#45733;&#44284; &#53080;&#53584;&#52768;&#47484; &#44396;&#52404;&#54868;&#54664;&#49845;&#45768;&#45796;.
+                            </p>
+
+                            <p class="process-credit">
+                                MP3 &#183; &#44592;&#54925; / &#44608;&#51008;&#49556; &#183; &#49464;&#48512; &#44592;&#54925; &#44396;&#52404;&#54868;
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="process-item">
+
+                        <span class="process-number">
+                            02
+                        </span>
+
+                        <h3 class="process-name">
+                            CORE DEVELOPMENT
+                        </h3>
+
+                        <div class="process-content">
+
+                            <p class="process-description">
+                                &#44592;&#54925;&#51012; &#48148;&#53461;&#51004;&#47196; Unity&#50640;&#49436; &#44172;&#51076; &#49884;&#49828;&#53596;&#51012; &#51228;&#51089;&#54616;&#44256;, MediaPipe&#47484; &#54876;&#50857;&#54620; &#49552;&#46041;&#51089; &#51064;&#49885; &#44592;&#45733;&#51012; &#44396;&#54788;&#54633;&#45768;&#45796;.
+                            </p>
+
+                            <p class="process-credit">
+                                &#44608;&#51008;&#49556; &#183; &#44172;&#51076; &#44592;&#45733; &#44060;&#48156; / &#51060;&#50500;&#47492; &#183; &#54532;&#47196;&#44536;&#47000;&#48141; &#48143; &#46041;&#51089; &#51064;&#49885;
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="process-item">
+
+                        <span class="process-number">
+                            03
+                        </span>
+
+                        <h3 class="process-name">
+                            EXPERIENCE DESIGN
+                        </h3>
+
+                        <div class="process-content">
+
+                            <p class="process-description">
+                                &#44172;&#51076;&#51032; &#54540;&#47112;&#51060; &#55120;&#47492;&#50640; &#47582;&#52656; UI, &#47532;&#46316;&#44172;&#51076; &#47112;&#48296;, &#49324;&#50868;&#46300;&#47484; &#51228;&#51089;&#54616;&#44256; &#44172;&#51076; &#44221;&#54744;&#51012; &#44396;&#52404;&#54868;&#54633;&#45768;&#45796;.
+                            </p>
+
+                            <p class="process-credit">
+                                &#54616;&#50689;&#51452; &#183; UI / &#47112;&#48296; &#46356;&#51088;&#51064; / &#49324;&#50868;&#46300;
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="process-item">
+
+                        <span class="process-number">
+                            04
+                        </span>
+
+                        <h3 class="process-name">
+                            VISUAL DEVELOPMENT
+                        </h3>
+
+                        <div class="process-content">
+
+                            <p class="process-description">
+                                &#44172;&#51076;&#51032; &#52968;&#49481;&#44284; &#49464;&#44228;&#44288;&#50640; &#47582;&#52656; &#52880;&#47533;&#53552; &#48708;&#51452;&#50620;&#51012; &#51228;&#51089;&#54616;&#44256; &#51204;&#52404;&#51201;&#51064; &#44172;&#51076; &#48516;&#50948;&#44592;&#47484; &#50756;&#49457;&#54633;&#45768;&#45796;.
+                            </p>
+
+                            <p class="process-credit">
+                                &#44608;&#51652; &#183; &#52880;&#47533;&#53552; &#51068;&#47084;&#49828;&#53944;
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                    <article class="process-item">
+
+                        <span class="process-number">
+                            05
+                        </span>
+
+                        <h3 class="process-name">
+                            INTEGRATION &amp; TEST
+                        </h3>
+
+                        <div class="process-content">
+
+                            <p class="process-description">
+                                &#44033; &#54028;&#53944;&#50640;&#49436; &#51228;&#51089;&#54620; &#44208;&#44284;&#47932;&#51012; &#54616;&#45208;&#51032; &#44172;&#51076;&#51004;&#47196; &#53685;&#54633;&#54616;&#44256;, &#48152;&#48373;&#51201;&#51064; &#54540;&#47112;&#51060; &#53580;&#49828;&#53944;&#47484; &#53685;&#54644; &#44592;&#45733;&#44284; &#50672;&#52636;&#51012; &#49688;&#51221;&#54633;&#45768;&#45796;.
+                            </p>
+
+                            <p class="process-credit">
+                                MP3 &#183; &#51204;&#52404; &#52280;&#50668;
+                            </p>
+
+                        </div>
+
+                    </article>
 
                 </div>
 
