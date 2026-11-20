@@ -135,6 +135,29 @@
             color: #7386a3;
         }
 
+        .hero-site-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 18px;
+            padding: 13px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.025);
+            color: #f4f7fb;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .hero-site-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
         section {
             padding: 130px 0;
         }
@@ -507,6 +530,12 @@
                 margin-top: 45px;
             }
 
+            .hero-site-link {
+                margin-top: 16px;
+                padding: 12px 16px;
+                font-size: 12px;
+            }
+
             section {
                 padding: 90px 0;
             }
@@ -644,6 +673,15 @@
             <p class="scroll-label">
                 &#50500;&#47000;&#47196; &#49828;&#53356;&#47204;
             </p>
+
+            <a
+                class="hero-site-link"
+                href="https://areum311.github.io/UNMUTE/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                &#44172;&#51076; &#49548;&#44060; &#49324;&#51060;&#53944; &#48148;&#47196;&#44032;&#44592; &#8594;
+            </a>
 
         </div>
     </header>
@@ -1046,11 +1084,9 @@
         <div class="container footer-inner">
 
             <div>
-
                 <div class="footer-logo">
                     MP3
                 </div>
-
             </div>
 
             <div class="footer-info">
